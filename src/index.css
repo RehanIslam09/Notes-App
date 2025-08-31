@@ -85,32 +85,77 @@ body {
     0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 }
 
+.card {
+  width: 400px;
+  border-radius: 12px;
+  cursor: pointer;
+  position: absolute;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  backdrop-filter: blur(8px); /* dreamy glassy effect */
+  box-shadow: 0 0 20px rgba(209, 107, 165, 0.25),
+    /* soft pink glow */ 0 0 40px rgba(139, 92, 246, 0.15); /* violet glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 30px rgba(209, 107, 165, 0.35),
+    0 0 60px rgba(139, 92, 246, 0.25);
+}
+
 .card-header {
-  background-color: #9bd1de;
-  border-radius: 5px 5px 0 0;
+  background: linear-gradient(90deg, #9bd1de, #d16ba5);
+  border-radius: 12px 12px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 8px 12px;
+  font-weight: bold;
+  color: #18181a;
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {
   padding: 1em;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 12px 12px;
 }
 
 .card-body textarea {
-  background-color: inherit;
+  background-color: transparent;
   border: none;
   width: 100%;
   height: 100%;
   resize: none;
   font-size: 16px;
+  color: inherit;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
 }
 
 textarea:focus {
-  background-color: inherit;
+  background-color: transparent;
   outline: none;
   width: 100%;
   height: 100%;
+}
+
+/* dreamy subtle animation */
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.card {
+  animation: floaty 6s ease-in-out infinite;
 }
