@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import Trash from '../assets/icons/Trash';
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from '../pages/utils';
+import { db } from '../appwrite/databases.js';
 
 const NoteCard = ({ note }) => {
   const body = bodyParser(note.body);
@@ -40,9 +41,21 @@ const NoteCard = ({ note }) => {
     setPositon(newPosition);
   };
 
-  const mouseUp = () => {
+  const mouseUp = async () => {
     document.removeEventListener('mousemove', mouseMove);
     document.removeEventListener('mouseup', mouseUp);
+
+    const newPosition = setNewOffset(cardRef.current);
+    saveData('position', newPosition);
+  };
+
+  const saveData = async (key, value) => {
+    const payload = { [key]: JSON.stringify(value) };
+    try {
+      await db.notes.update(note.$id, payload);
+    } catch (error) {
+      console.log('Error while saving note : ', error);
+    }
   };
 
   return (
