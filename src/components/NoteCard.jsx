@@ -1,9 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
 import Trash from '../assets/icons/Trash';
+import Spinner from '../assets/icons/spinner.jsx';
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from '../pages/utils';
 import { db } from '../appwrite/databases.js';
 
 const NoteCard = ({ note }) => {
+  const [saving, setSaving] = useState(false);
+  const keyUpTimer = useRef(null);
+
   const body = bodyParser(note.body);
   const [position, setPositon] = useState(JSON.parse(note.position));
   const colors = JSON.parse(note.colors);
@@ -56,6 +60,19 @@ const NoteCard = ({ note }) => {
     } catch (error) {
       console.log('Error while saving note : ', error);
     }
+    setSaving(false);
+  };
+
+  const handleKeyUp = () => {
+    setSaving(true);
+
+    if (keyUpTimer.current) {
+      clearTimeout(keyUpTimer.current);
+    }
+
+    keyUpTimer.current = setTimeout(() => {
+      saveData('body', textAreaRef.current.value);
+    }, 2000);
   };
 
   return (
@@ -74,9 +91,16 @@ const NoteCard = ({ note }) => {
         style={{ background: colors.colorHeader }}
       >
         <Trash />
+        {saving && (
+          <div className="card-saving">
+            <Spinner color={colors.colorText} />
+            <span style={{ color: colors.colorText }}>Saving...</span>
+          </div>
+        )}
       </div>
       <div className="card-body">
         <textarea
+          onKeyUp={handleKeyUp}
           ref={textAreaRef}
           style={{ color: colors.colorText }}
           defaultValue={body}
