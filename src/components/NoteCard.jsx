@@ -3,10 +3,14 @@ import Spinner from '../assets/icons/spinner.jsx';
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from '../pages/utils';
 import { db } from '../appwrite/databases.js';
 import DeleteButton from './DeleteButton.jsx';
+import { useContext } from 'react';
+import { NoteContext } from '../context/NoteContext.jsx';
 
 const NoteCard = ({ note }) => {
   const [saving, setSaving] = useState(false);
   const keyUpTimer = useRef(null);
+
+  const { setSelectedNote } = useContext(NoteContext);
 
   const body = bodyParser(note.body);
   const [position, setPositon] = useState(JSON.parse(note.position));
@@ -27,6 +31,7 @@ const NoteCard = ({ note }) => {
       document.addEventListener('mouseup', mouseUp);
 
       setZIndex(cardRef.current);
+      setSelectedNote(note);
     }
     mouseStartPos = { x: e.clientX, y: e.clientY };
   };
@@ -111,6 +116,7 @@ const NoteCard = ({ note }) => {
           }}
           onFocus={() => {
             setZIndex(cardRef.current);
+            setSelectedNote(note);
           }}
         ></textarea>
       </div>
