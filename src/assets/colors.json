@@ -1,0 +1,32 @@
+[
+  {
+    "id": "color-yellow",
+    "colorHeader": "linear-gradient(135deg, #FFF9C4, #FFE082, #FFD54F)",
+    "colorBody": "linear-gradient(180deg, #FFFDE7, #FFF8E1, #FFECB3)",
+    "colorText": "#3B2F00"
+  },
+  {
+    "id": "color-green",
+    "colorHeader": "linear-gradient(135deg, #C8E6C9, #A5D6A7, #81C784)",
+    "colorBody": "linear-gradient(180deg, #F1F8E9, #E8F5E9, #DCEDC8)",
+    "colorText": "#103B24"
+  },
+  {
+    "id": "color-blue",
+    "colorHeader": "linear-gradient(135deg, #B3E5FC, #81D4FA, #4FC3F7)",
+    "colorBody": "linear-gradient(180deg, #E1F5FE, #B3E5FC, #81D4FA)",
+    "colorText": "#0D2B3A"
+  },
+  {
+    "id": "color-purple",
+    "colorHeader": "linear-gradient(135deg, #E1BEE7, #CE93D8, #BA68C8)",
+    "colorBody": "linear-gradient(180deg, #F3E5F5, #E1BEE7, #CE93D8)",
+    "colorText": "#2C1039"
+  },
+  {
+    "id": "color-pink",
+    "colorHeader": "linear-gradient(135deg, #F8BBD0, #F48FB1, #F06292)",
+    "colorBody": "linear-gradient(180deg, #FCE4EC, #F8BBD0, #F48FB1)",
+    "colorText": "#3B0A21"
+  }
+]
