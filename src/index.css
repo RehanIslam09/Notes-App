@@ -248,3 +248,18 @@ textarea:focus {
     transform: translateY(-50%) translateX(6px);
   }
 }
+
+.color {
+  background-color: grey;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.color:hover {
+  height: 45px;
+  width: 45px;
+}
