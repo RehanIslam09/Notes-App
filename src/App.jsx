@@ -1,4 +1,4 @@
-import NotesPage from "./pages/NotesPage"
+import NotesPage from './pages/NotesPage.jsx';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
         <NotesPage />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
