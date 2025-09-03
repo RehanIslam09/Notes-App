@@ -21,12 +21,13 @@ const NoteCard = ({ note, setNotes }) => {
   }, []);
 
   const mouseDown = (e) => {
+    if (e.target.className === 'card-header') {
+      document.addEventListener('mousemove', mouseMove);
+      document.addEventListener('mouseup', mouseUp);
+
+      setZIndex(cardRef.current);
+    }
     mouseStartPos = { x: e.clientX, y: e.clientY };
-
-    document.addEventListener('mousemove', mouseMove);
-    document.addEventListener('mouseup', mouseUp);
-
-    setZIndex(cardRef.current);
   };
 
   const mouseMove = (e) => {

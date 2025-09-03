@@ -3,11 +3,9 @@ import Trash from '../assets/icons/Trash';
 import { db } from '../appwrite/databases.js';
 
 const DeleteButton = ({ noteId, setNotes }) => {
-
   const handleDelete = async () => {
-      setNotes((prevState) =>
-          prevState.filter((note) => note.$id !== noteId)
-      );
+    db.notes.delete(noteId);
+    setNotes((prevState) => prevState.filter((note) => note.$id !== noteId));
   };
 
   return (
